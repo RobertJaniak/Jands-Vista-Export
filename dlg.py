@@ -89,10 +89,10 @@ def CreateDialog():
     vs.SetBelowItem( dialog, kDmxAddressLabel, kLightingTypesLB, 0, 0 )
 
     # set alignments
-    vs.AlignItemEdge( dialog, kFixtureNamePopup, kRight, 1, kShift );
-    vs.AlignItemEdge( dialog, kFixtureNumberPopup, kRight, 1, kShift );
-    vs.AlignItemEdge( dialog, kDmxUniversePopup, kRight, 1, kShift );
-    vs.AlignItemEdge( dialog, kDmxAddressPopup, kRight, 1, kShift );
+    vs.AlignItemEdge( dialog, kFixtureNamePopup, kRight, 1, kShift )
+    vs.AlignItemEdge( dialog, kFixtureNumberPopup, kRight, 1, kShift )
+    vs.AlignItemEdge( dialog, kDmxUniversePopup, kRight, 1, kShift )
+    vs.AlignItemEdge( dialog, kDmxAddressPopup, kRight, 1, kShift )
 
     # set help strings
     cnt = 1

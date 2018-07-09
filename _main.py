@@ -7,10 +7,9 @@ __contact__ = "robert@stagevision.pl"
 
 import vs
 import os
-# import dialog builder file
-import dlg
+from dlg import *
 
-POPUP_LIST = [dlg.kFixtureNamePopup, dlg.kFixtureNumberPopup, dlg.kDmxUniversePopup, dlg.kDmxAddressPopup]
+POPUP_LIST = [kFixtureNamePopup, kFixtureNumberPopup, kDmxUniversePopup, kDmxAddressPopup]
 DEFAULT_FIELD = ['Purpose', 'Channel', 'Universe', 'Dimmer']
 DEFAULT_DEVICE_TYPE = ['Light', 'Moving Light']
 PLUGIN_NAME = 'Lighting Device'
@@ -30,8 +29,8 @@ def execute():
 
     if device_list:
         # create dialog from external file
-        dialog_id = dlg.CreateDialog()
-        if vs.RunLayoutDialog(dialog_id, dialog_handler) == dlg.kOK:
+        dialog_id = CreateDialog()
+        if vs.RunLayoutDialog(dialog_id, dialog_handler) == kOK:
             # get platform type for difference file directory style
 
             err, dir_path = vs.GetFolder('Select a Folder')
@@ -83,49 +82,49 @@ def dialog_handler(item, _):
             device_id += 1
 
         # insert list browser column
-        vs.InsertLBColumn(dialog_id, dlg.kLightingTypesLB, 0, 'Device Types', 150)
-        vs.InsertLBColumn(dialog_id, dlg.kLightingTypesLB, 1, '#', 50)
+        vs.InsertLBColumn(dialog_id, kLightingTypesLB, 0, 'Device Types', 150)
+        vs.InsertLBColumn(dialog_id, kLightingTypesLB, 1, '#', 50)
 
         # set list browser column type
-        vs.SetLBControlType(dialog_id, dlg.kLightingTypesLB, 1, 3)
-        vs.SetLBItemDisplayType(dialog_id, dlg.kLightingTypesLB, 1,1)
+        vs.SetLBControlType(dialog_id, kLightingTypesLB, 1, 3)
+        vs.SetLBItemDisplayType(dialog_id, kLightingTypesLB, 1,1)
 
         # add list browser images
         check_image_path = 'Vectorworks/Standard Images/Checkmark.png'
-        check_image = vs.AddListBrowserImage(dialog_id, dlg.kLightingTypesLB, check_image_path)
+        check_image = vs.AddListBrowserImage(dialog_id, kLightingTypesLB, check_image_path)
         blank_image_path = 'Vectorworks/Standard Images/Blank.png'
-        blank_image = vs.AddListBrowserImage(dialog_id, dlg.kLightingTypesLB, blank_image_path)
+        blank_image = vs.AddListBrowserImage(dialog_id, kLightingTypesLB, blank_image_path)
 
         # insert list browser column data
-        vs.InsertLBColumnDataItem(dialog_id, dlg.kLightingTypesLB, 1, 'YES', check_image, -1, 0)
-        vs.InsertLBColumnDataItem(dialog_id, dlg.kLightingTypesLB, 1, 'NO', blank_image, -1, 0)
+        vs.InsertLBColumnDataItem(dialog_id, kLightingTypesLB, 1, 'YES', check_image, -1, 0)
+        vs.InsertLBColumnDataItem(dialog_id, kLightingTypesLB, 1, 'NO', blank_image, -1, 0)
 
         # enable list browser lines
-        vs.EnableLBColumnLines(dialog_id, dlg.kLightingTypesLB, True)
+        vs.EnableLBColumnLines(dialog_id, kLightingTypesLB, True)
 
         # insert lighting device types to list browser and check defaults
         for i, device_type in enumerate(device_list):
-            vs.InsertLBItem(dialog_id, dlg.kLightingTypesLB, i, device_type)
+            vs.InsertLBItem(dialog_id, kLightingTypesLB, i, device_type)
             if device_type in DEFAULT_DEVICE_TYPE:
-                vs.SetLBItemUsingColumnDataItem(dialog_id, dlg.kLightingTypesLB, i, 1, check_image)
+                vs.SetLBItemUsingColumnDataItem(dialog_id, kLightingTypesLB, i, 1, check_image)
 
     # get data after OK click
-    if item == dlg.kOK:
+    if item == kOK:
 
         global name_field, number_field, universe_field, address_field, cCriteria
 
         # get name, number, universe, address name field
-        name_field = vs.GetItemText(dialog_id, dlg.kFixtureNamePopup)
-        number_field = vs.GetItemText(dialog_id, dlg.kFixtureNumberPopup)
-        universe_field = vs.GetItemText(dialog_id, dlg.kDmxUniversePopup)
-        address_field = vs.GetItemText(dialog_id, dlg.kDmxAddressPopup)
+        name_field = vs.GetItemText(dialog_id, kFixtureNamePopup)
+        number_field = vs.GetItemText(dialog_id, kFixtureNumberPopup)
+        universe_field = vs.GetItemText(dialog_id, kDmxUniversePopup)
+        address_field = vs.GetItemText(dialog_id, kDmxAddressPopup)
 
         # get list browser data and create criteria list
         cCriteria = []
-        for row in range(vs.GetNumLBItems(dialog_id, dlg.kLightingTypesLB)):
-            _, _, image = vs.GetLBItemInfo(dialog_id, dlg.kLightingTypesLB, row, 1)
+        for row in range(vs.GetNumLBItems(dialog_id, kLightingTypesLB)):
+            _, _, image = vs.GetLBItemInfo(dialog_id, kLightingTypesLB, row, 1)
             if image == check_image:
-                _, data, _ = vs.GetLBItemInfo(dialog_id, dlg.kLightingTypesLB, row, 0)
+                _, data, _ = vs.GetLBItemInfo(dialog_id, kLightingTypesLB, row, 0)
                 cCriteria.append("('Lighting Device'.'Device Type'='" + data + "' )")
 
     return item
