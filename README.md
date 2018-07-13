@@ -2,7 +2,7 @@
 
 VectorworkVs plugin for export fixtures data to Jands Vista Console
 
-## Instalation:
+## Installing:
 
 - put all files inside 'plug-ins' directory in your 'User Folder' (Vectorworks Preferences... -> User Folders -> Explore...)
 - reload Vectorworks
