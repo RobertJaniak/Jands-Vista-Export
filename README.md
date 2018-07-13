@@ -1,5 +1,6 @@
-# jands-vista-export
-Vectorworks plugin for export fixtures data to Jands Vista Console
+# VEctorworks Spotlight Plugin for Jands Vista 1.0
+
+VectorworkVs plugin for export fixtures data to Jands Vista Console
 
 ## Instalation:
 
@@ -8,7 +9,7 @@ Vectorworks plugin for export fixtures data to Jands Vista Console
 - edit your current workspace. (Workspaces -> Edit Current Workspace...)
 - drag and drop 'Jands Vista Export' from 'SV' category to your favourite menu
 
-## Using:
+## How to:
 
 - number your Lighting Devices (channel, universe, dimmer, addres, mode ect.)
 - run Jands Vista Export menu command
