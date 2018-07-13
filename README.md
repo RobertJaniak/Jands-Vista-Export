@@ -1,4 +1,4 @@
-# VEctorworks Spotlight Plugin for Jands Vista 1.0
+# Vectorworks Spotlight Plugin for Jands Vista 1.0
 
 VectorworkVs plugin for export fixtures data to Jands Vista Console
 
